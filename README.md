@@ -58,7 +58,27 @@ https://www.paypal.com/ncp/payment/FAJ7QYVAWTNPE
 ```text
 https://www.paypal.biz/warbofficial
 ```
-
+<div id="paypal-button-container-P-28626469L66565021NLPWPLY"></div>
+<script src="https://www.paypal.com/sdk/js?client-id=BAAfLCJgq24DOoYxadNGlvFXWuoGp9P7uiTS04VwKu3NL9UfcmDksx09XeKxT10NVQT2YhAEYmv6szHvQU&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+<script>
+  paypal.Buttons({
+      style: {
+          shape: 'rect',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          plan_id: 'P-28626469L66565021NLPWPLY'
+        });
+      },
+      onApprove: function(data, actions) {
+        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+      }
+  }).render('#paypal-button-container-P-28626469L66565021NLPWPLY'); // Renders the PayPal button
+</script>
 ---
 
 ## 🧭 Which Link Should I Use?
