@@ -1,30 +1,30 @@
 # 💙 PayPal Payment Hub
 
-**Zentrale Übersicht aller PayPal-Zahlungslinks unseres Teams**
+**Central overview of all official PayPal payment links**
 
-Willkommen im offiziellen PayPal Payment Hub. Diese Dokumentation bündelt alle verfügbaren Zahlungsoptionen an einem Ort, damit Teammitglieder schnell den richtigen Link finden und teilen können.
+Welcome to the PayPal Payment Hub! This document brings all our payment options together in one place, making it easy for team members to find and share the correct link.
 
 ---
 
-## 📋 Übersicht
+## 📋 Payment Overview
 
-| Typ | Bezeichnung | Verwendung |
+| Icon | Payment Option | Purpose |
 |:---:|---|---|
-| 💚 | **Donate** | Freiwillige Spenden und Unterstützung |
-| 👑 | **VIP** | Zahlungen für VIP-Angebote |
-| 🪙 | **Shop Points** | Zahlungen für Shop Points |
+| 💚 | **Donate** | Voluntary donations and project support |
+| 👑 | **VIP** | Payments for VIP access or offers |
+| 🪙 | **Shop Points** | Payments related to Shop Points |
 
 ---
 
 ## 💚 1. Donate Button
 
-> Unterstütze unser Projekt mit einer freiwilligen Spende.
+> Support our project with a voluntary donation.
 
-**Zweck:** Spenden und freiwillige Unterstützung.
+**Purpose:** Accept voluntary donations and financial support for the project.
 
 [![Donate](https://img.shields.io/badge/PayPal-Donate-0070BA?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=GQSFFJC5GJRTE)
 
-**Direktlink:**
+**Direct Link:**
 ```text
 https://www.paypal.com/donate/?hosted_button_id=GQSFFJC5GJRTE
 ```
@@ -33,67 +33,69 @@ https://www.paypal.com/donate/?hosted_button_id=GQSFFJC5GJRTE
 
 ## 👑 2. VIP Button
 
-> Der Zahlungslink für unser VIP-Angebot.
+> The official payment link for our VIP offer.
 
-**Zweck:** Zahlung für VIP-Angebote und zugehörige Leistungen.
+**Purpose:** Payments for VIP access, offers, and associated services.
 
 [![VIP Payment](https://img.shields.io/badge/PayPal-VIP%20Payment-5865F2?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/ncp/payment/FAJ7QYVAWTNPE)
 
-**Direktlink:**
+**Direct Link:**
 ```text
 https://www.paypal.com/ncp/payment/FAJ7QYVAWTNPE
 ```
 
 ---
 
-## 🪙 3. PayPal.Me – Shop Points
+## 🪙 3. PayPal.Me — Shop Points
 
-> Der Zahlungslink für unser Shop-Points-System.
+> The payment link for our Shop Points system.
 
-**Zweck:** Zahlungen im Zusammenhang mit Shop Points.
+**Purpose:** Payments associated with Shop Points.
 
 [![Shop Points](https://img.shields.io/badge/PayPal-Shop%20Points-003087?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.biz/warbofficial)
 
-**Direktlink:**
+**Direct Link:**
 ```text
 https://www.paypal.biz/warbofficial
 ```
 
 ---
 
-## 🧭 Welchen Link soll ich verwenden?
+## 🧭 Which Link Should I Use?
 
-| Wenn du … | Verwende |
+| If you want to… | Use this link |
 |---|---|
-| unser Projekt freiwillig unterstützen möchtest | 💚 Donate |
-| ein VIP-Angebot bezahlen möchtest | 👑 VIP |
-| Shop Points bezahlen möchtest | 🪙 Shop Points |
+| Support the project voluntarily | 💚 Donate |
+| Pay for a VIP offer | 👑 VIP |
+| Make a payment for Shop Points | 🪙 Shop Points |
 
 ---
 
-## 🔒 Hinweise für das Team
+## 🔒 Team Guidelines
 
-- ✅ Verwende immer den passenden Zahlungslink.
-- ✅ Prüfe vor dem Teilen, ob der Link zum gewünschten Angebot gehört.
-- ✅ Teile keine veränderten oder nicht freigegebenen Zahlungslinks.
-- ⚠️ Die tatsächlichen Zahlungsbedingungen und Leistungen richten sich nach der jeweiligen PayPal-Konfiguration.
+- ✅ Always use the correct payment link for the intended purpose.
+- ✅ Double-check the link before sharing it.
+- ✅ Do not distribute modified or unauthorized payment links.
+- ⚠️ Actual payment terms and included services depend on the respective PayPal configuration.
 
 ---
 
-## 🔗 Alle Zahlungslinks auf einen Blick
+## 🔗 All Payment Links at a Glance
 
-| Bezeichnung | Zahlungslink |
+| Payment Option | Link |
 |---|---|
-| 💚 Donate | [Jetzt öffnen](https://www.paypal.com/donate/?hosted_button_id=GQSFFJC5GJRTE) |
-| 👑 VIP | [Jetzt öffnen](https://www.paypal.com/ncp/payment/FAJ7QYVAWTNPE) |
-| 🪙 Shop Points | [Jetzt öffnen](https://www.paypal.biz/warbofficial) |
+| 💚 Donate | [Open Donate](https://www.paypal.com/donate/?hosted_button_id=GQSFFJC5GJRTE) |
+| 👑 VIP | [Open VIP Payment](https://www.paypal.com/ncp/payment/FAJ7QYVAWTNPE) |
+| 🪙 Shop Points | [Open Shop Points](https://www.paypal.biz/warbofficial) |
 
 ---
 
 <div align="center">
 
-**💙 PayPal Payment Hub**
+### 💙 PayPal Payment Hub
 
-*Alle Zahlungslinks. Ein zentraler Ort.*
+*All payment links. One central place.*
+
+**Maintained by the Team**
 
 </div>
