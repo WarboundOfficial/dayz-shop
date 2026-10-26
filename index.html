@@ -1,207 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Warbound Server — Monetization Rules</title>
-<style>
-  :root {
-    --bg: #14171a;
-    --panel: #1c2023;
-    --ink: #e7e4dc;
-    --ink-dim: #9a9d9f;
-    --rule: #2e3336;
-    --accent: #c98a3f;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    line-height: 1.65;
-  }
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
-  }
-  header {
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 2rem;
-    margin-bottom: 2.5rem;
-  }
-  .kicker {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-    color: var(--accent);
-    margin: 0 0 0.6rem;
-  }
-  h1 {
-    font-size: 2.1rem;
-    margin: 0 0 0.6rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-  .meta {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.9rem;
-    color: var(--ink-dim);
-  }
-  nav {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.92rem;
-    background: var(--panel);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 1.1rem 1.3rem;
-    margin-bottom: 3rem;
-  }
-  nav p {
-    margin: 0 0 0.6rem;
-    color: var(--ink-dim);
-    font-size: 0.8rem;
-  }
-  nav ol {
-    margin: 0;
-    padding-left: 1.2rem;
-    columns: 2;
-    column-gap: 1.5rem;
-  }
-  nav li { margin-bottom: 0.4rem; break-inside: avoid; }
-  nav a { color: var(--ink); text-decoration: none; }
-  nav a:hover { color: var(--accent); }
-
-  section { margin-bottom: 2.6rem; scroll-margin-top: 1.5rem; }
-  h2 {
-    font-size: 1.25rem;
-    color: var(--accent);
-    font-weight: 600;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 0.5rem;
-    margin: 0 0 1rem;
-  }
-  h3 {
-    font-size: 1.02rem;
-    margin: 1.4rem 0 0.6rem;
-    color: var(--ink);
-  }
-  p { margin: 0 0 1rem; }
-  ul { margin: 0 0 1rem; padding-left: 1.3rem; }
-  li { margin-bottom: 0.45rem; }
-  a.inline { color: var(--accent); }
-
-  .callout {
-    background: var(--panel);
-    border-left: 3px solid var(--accent);
-    padding: 0.9rem 1.1rem;
-    border-radius: 0 4px 4px 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.92rem;
-    color: var(--ink-dim);
-  }
-
-  footer {
-    border-top: 1px solid var(--rule);
-    padding-top: 1.5rem;
-    margin-top: 3rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 0.85rem;
-    color: var(--ink-dim);
-  }
-
-  @media (max-width: 600px) {
-    .wrap { padding: 2.5rem 1.2rem 4rem; }
-    h1 { font-size: 1.6rem; }
-    nav ol { columns: 1; }
-  }
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10152d">
+  <meta name="description" content="The official payment hub for donations, VIP access, Shop Points, and subscriptions.">
+  <title>PayPal Payment Hub</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b1020;
+      --panel: rgba(20, 28, 55, .78);
+      --line: rgba(255,255,255,.12);
+      --muted: #b7c1df;
+      --text: #f7f8ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 12% 5%, rgba(58, 117, 255, .28), transparent 32rem),
+        radial-gradient(ellipse at 92% 16%, rgba(180, 62, 255, .22), transparent 30rem),
+        radial-gradient(ellipse at 50% 90%, rgba(0, 204, 170, .12), transparent 35rem),
+        var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    header { padding: 26px 0 0; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px; }
+    .brand-mark {
+      width: 42px; height: 42px; display:grid; place-items:center; border-radius:14px;
+      background: linear-gradient(135deg, #00c6ff, #7b61ff 55%, #ff5db1);
+      box-shadow: 0 8px 28px rgba(83, 101, 255, .35); font-size:20px;
+    }
+    .top-pill {
+      border:1px solid var(--line); border-radius:999px; padding:7px 12px;
+      color:#dce4ff; font-size:.78rem; background:rgba(255,255,255,.04);
+    }
+    .hero { text-align:center; padding:76px 0 48px; }
+    .eyebrow {
+      display:inline-flex; gap:8px; align-items:center; padding:7px 12px; border-radius:999px;
+      color:#d9e5ff; border:1px solid rgba(124,151,255,.35);
+      background:rgba(72,102,255,.12); font-size:.82rem; font-weight:700;
+    }
+    h1 { margin:20px auto 14px; max-width:850px; font-size:clamp(2.5rem, 7vw, 5.1rem); line-height:1.02; letter-spacing:-.055em; }
+    .gradient-text {
+      background:linear-gradient(90deg, #62e8ff, #a99aff 45%, #ff8acb 78%, #ffd477);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .hero p { max-width:650px; margin:0 auto; color:var(--muted); font-size:clamp(1rem, 2vw, 1.15rem); }
+    .hero-actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top:28px; }
+    .button {
+      display:inline-flex; justify-content:center; align-items:center; gap:9px; text-decoration:none;
+      border-radius:13px; padding:12px 18px; font-weight:800; border:1px solid transparent;
+      transition:transform .18s ease, filter .18s ease; cursor:pointer;
+    }
+    .button:hover { transform:translateY(-2px); filter:brightness(1.08); }
+    .button-primary { color:#091326; background:linear-gradient(100deg,#71e7ff,#b2a1ff); box-shadow:0 10px 28px rgba(100,139,255,.2); }
+    .button-quiet { border-color:var(--line); background:rgba(255,255,255,.05); color:#f4f6ff; }
+    main { padding-bottom:56px; }
+    .section-heading { display:flex; align-items:end; justify-content:space-between; gap:18px; margin:16px 0 20px; }
+    .section-heading h2 { margin:0; font-size:clamp(1.5rem, 3vw, 2rem); letter-spacing:-.03em; }
+    .section-heading p { margin:5px 0 0; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:18px; }
+    .card {
+      position:relative; overflow:hidden; padding:24px; border:1px solid var(--line); border-radius:22px;
+      background:linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)), var(--panel);
+      box-shadow:0 18px 50px rgba(0,0,0,.16); backdrop-filter:blur(12px);
+    }
+    .card::before { content:""; position:absolute; width:180px; height:180px; border-radius:50%; filter:blur(48px); opacity:.16; right:-80px; top:-90px; pointer-events:none; }
+    .card.donate::before { background:#41e5a5; }
+    .card.vip::before { background:#9e83ff; }
+    .card.points::before { background:#ffb84e; }
+    .card.subscription::before { background:#46cfff; }
+    .card-head { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; position:relative; }
+    .icon-box { width:48px; height:48px; display:grid; place-items:center; font-size:23px; border-radius:15px; flex:none; }
+    .donate .icon-box { background:rgba(65,229,165,.13); }
+    .vip .icon-box { background:rgba(158,131,255,.16); }
+    .points .icon-box { background:rgba(255,184,78,.14); }
+    .subscription .icon-box { background:rgba(70,207,255,.14); }
+    .tag { font-size:.72rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; border:1px solid var(--line); padding:5px 9px; border-radius:999px; color:#dbe4ff; }
+    .card h3 { font-size:1.35rem; margin:17px 0 7px; letter-spacing:-.025em; position:relative; }
+    .card p { margin:0; color:var(--muted); min-height:52px; position:relative; }
+    .card .button { margin-top:21px; width:100%; }
+    .donate .button { background:linear-gradient(100deg,#43e5a2,#b4f4d8); color:#08261d; }
+    .vip .button { background:linear-gradient(100deg,#a18aff,#d6a7ff); color:#1c103d; }
+    .points .button { background:linear-gradient(100deg,#ffc45c,#ffe5a4); color:#382300; }
+    .subscription { grid-column:1 / -1; border-color:rgba(91,205,255,.28); }
+    .subscription-layout { display:grid; grid-template-columns:1fr minmax(260px, .82fr); gap:26px; align-items:center; }
+    .subscription .button { background:linear-gradient(100deg,#5de0ff,#91a5ff); color:#07172c; }
+    .subscription-copy p { min-height:0; }
+    .subscribe-box { padding:18px; border:1px solid rgba(255,255,255,.1); background:rgba(3,9,25,.45); border-radius:16px; }
+    #paypal-button-container-P-28626469L66565021NLPWPLY { min-height:44px; }
+    #subscription-status { margin:12px 0 0; font-size:.9rem; color:#a9f5d0; overflow-wrap:anywhere; }
+    .fine-print { color:#96a3c6; font-size:.8rem; margin:12px 0 0; }
+    .quick-links { margin-top:26px; padding:24px; border:1px solid var(--line); border-radius:22px; background:rgba(255,255,255,.035); }
+    .quick-links h2 { margin:0 0 14px; font-size:1.2rem; }
+    .link-list { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+    .quick-link { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:13px 14px; border-radius:13px; border:1px solid var(--line); text-decoration:none; background:rgba(255,255,255,.035); color:#e9edff; font-weight:700; }
+    .quick-link span:last-child { color:#8ca2ff; font-size:1.1rem; }
+    .quick-link:hover { background:rgba(255,255,255,.075); }
+    .notice { margin-top:20px; padding:15px 17px; border-left:3px solid #7e94ff; background:rgba(105,127,255,.08); border-radius:0 12px 12px 0; color:#c1cbe8; font-size:.88rem; }
+    footer { border-top:1px solid var(--line); padding:24px 0 34px; color:#8f9bbc; font-size:.85rem; }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    @media (max-width:760px) {
+      .hero { padding:58px 0 34px; }
+      .grid, .link-list { grid-template-columns:1fr; }
+      .subscription { grid-column:auto; }
+      .subscription-layout { grid-template-columns:1fr; }
+      .section-heading { align-items:flex-start; flex-direction:column; }
+      .card { padding:21px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { transition:none !important; }
+    }
+  </style>
 </head>
 <body>
-<div class="wrap">
-
-  <header>
-    <p class="kicker">DayZ Community Server</p>
-    <h1>Warbound — Monetization Rules &amp; Policy</h1>
-    <p class="meta">Last updated: September 2026</p>
+  <header class="shell">
+    <nav class="topbar" aria-label="Main navigation">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><span>Payment Hub</span></div>
+      <span class="top-pill">Secure payments via PayPal</span>
+    </nav>
   </header>
 
-  <nav aria-label="Table of contents">
-    <p>Contents</p>
-    <ol>
-      <li><a href="#overview">1. Overview</a></li>
-      <li><a href="#vip">2. VIP Priority</a></li>
-      <li><a href="#shop">3. Points Shop (Shop Coins)</a></li>
-      <li><a href="#requirements">4. Purchase Requirements</a></li>
-      <li><a href="#payments">5. Payment Processing</a></li>
-      <li><a href="#refunds">6. Refund Policy</a></li>
-      <li><a href="#approval">7. No Monetization Prior to Approval</a></li>
-      <li><a href="#contact">8. Support &amp; Contact</a></li>
-    </ol>
-  </nav>
-
-  <section id="overview">
-    <h2>1. Overview</h2>
-    <p>This page describes all forms of monetization offered on the Warbound DayZ server, including VIP Priority access and the in-game Points Shop (Shop Coins). It is published for transparency to players and to Bohemia Interactive as part of our server monetization approval request.</p>
-    <p>None of the items described below provide gameplay advantages such as increased damage, exclusive weapons, unlimited resources, or any other pay-to-win mechanic. All purchases are cosmetic, convenience-based (queue priority), or provide access to items available to all players through normal gameplay.</p>
+  <section class="hero shell">
+    <span class="eyebrow">✦ OFFICIAL PAYMENT CENTER</span>
+    <h1>Support, unlock, <span class="gradient-text">and power up.</span></h1>
+    <p>Choose the payment option that fits what you need. Use the official links below for donations, VIP access, Shop Points, and subscriptions.</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#payment-options">Explore payment options <span aria-hidden="true">↓</span></a>
+      <a class="button button-quiet" href="#subscription">View subscription</a>
+    </div>
   </section>
 
-  <section id="vip">
-    <h2>2. VIP Priority</h2>
-    <p>VIP Priority gives paying players priority access to join the server when it is full. It does not grant any in-game gameplay advantage.</p>
-    <ul>
-      <li>Duration: 1 month per purchase</li>
-      <li>Benefit: priority queue placement when the server is at capacity</li>
-      <li>Does not affect gameplay balance, loot, damage, or progression in any way</li>
-      <li>Payment: official paypal.me/vikres Checkout (Goods &amp; Services)</li>
-    </ul>
-    <h3>Server Launch Giveaway</h3>
-    <p>As a one-time launch promotion, new players purchasing their first VIP Priority package receive an additional month free (2 months total for the price of 1). This is a limited-time offer for first-time buyers only and does not affect the standard VIP Priority terms above.</p>
-  </section>
+  <main class="shell" id="payment-options">
+    <div class="section-heading">
+      <div>
+        <h2>Choose your payment</h2>
+        <p>Four options, one convenient place.</p>
+      </div>
+    </div>
 
-  <section id="shop">
-    <h2>3. Points Shop (Shop Coins)</h2>
-    <p>Shop Coins are a virtual currency that can be purchased and spent in the in-game Points Shop to unlock cosmetic items and rewards.</p>
-    <ul>
-      <li>Exchange rate: €1 = 1 Shop Coin</li>
-      <li>Coins are added to the player's shop balance after payment is confirmed</li>
-      <li>Coins can be spent in the in-game Points Shop, accessible via our Discord</li>
-      <li>All items and crate contents are listed with their full contents in advance in the shop interface — no hidden or randomized rewards with undisclosed odds</li>
-      <li>Payment: official paypal.me/vikres Checkout (Goods &amp; Services)</li>
-    </ul>
-  </section>
+    <div class="grid">
+      <article class="card donate">
+        <div class="card-head"><div class="icon-box" aria-hidden="true">💚</div><span class="tag">Support</span></div>
+        <h3>Donate</h3>
+        <p>Make a voluntary donation and help support the project.</p>
+        <a class="button" href="https://www.paypal.com/donate/?hosted_button_id=GQSFFJC5GJRTE" target="_blank" rel="noopener noreferrer">Donate with PayPal <span aria-hidden="true">↗</span></a>
+      </article>
 
-  <section id="requirements">
-    <h2>4. Purchase Requirements</h2>
-    <p>To receive any purchased item, VIP status, or redeem code, players must provide their Steam64 ID at the time of checkout. Purchases cannot be fulfilled without a valid Steam64 ID.</p>
-  </section>
+      <article class="card vip">
+        <div class="card-head"><div class="icon-box" aria-hidden="true">👑</div><span class="tag">VIP access</span></div>
+        <h3>VIP</h3>
+        <p>Use this link to pay for the available VIP offer or access.</p>
+        <a class="button" href="https://www.paypal.com/ncp/payment/FAJ7QYVAWTNPE" target="_blank" rel="noopener noreferrer">Get VIP <span aria-hidden="true">↗</span></a>
+      </article>
 
-  <section id="payments">
-    <h2>5. Payment Processing</h2>
-    <p>All payments are processed exclusively through official paypal.me/vikres Checkout links using PayPal's Goods &amp; Services option. This ensures buyer protection and secure, verifiable transactions for every purchase. We do not accept Friends &amp; Family transfers, cryptocurrency, or any other unverifiable payment method for shop or VIP purchases.</p>
-  </section>
+      <article class="card points">
+        <div class="card-head"><div class="icon-box" aria-hidden="true">🪙</div><span class="tag">Digital points</span></div>
+        <h3>Shop Points</h3>
+        <p>Open the Shop Points payment link to make a related payment.</p>
+        <a class="button" href="https://www.paypal.biz/warbofficial" target="_blank" rel="noopener noreferrer">Get Shop Points <span aria-hidden="true">↗</span></a>
+      </article>
 
-  <section id="refunds">
-    <h2>6. Refund Policy</h2>
-    <p>Refund requests can be submitted via our Discord support channel within 14 days of purchase, provided the purchased item, coins, or VIP time has not yet been used or redeemed. In the event the server permanently shuts down, players with unused VIP time or unspent Shop Coins may request a pro-rated refund for the unused portion.</p>
-  </section>
+      <article class="card subscription" id="subscription">
+        <div class="subscription-layout">
+          <div class="subscription-copy">
+            <div class="card-head"><div class="icon-box" aria-hidden="true">🔁</div><span class="tag">Recurring payment</span></div>
+            <h3>Subscribe with PayPal</h3>
+            <p>Start a subscription using PayPal's secure subscription checkout. Review the plan details in the PayPal checkout before confirming.</p>
+            <p class="fine-print">Subscription availability and billing terms are shown by PayPal during checkout.</p>
+          </div>
+          <div class="subscribe-box">
+            <div id="paypal-button-container-P-28626469L66565021NLPWPLY"></div>
+            <p id="subscription-status" role="status" aria-live="polite"></p>
+            <p class="fine-print">Checkout is provided by PayPal. Your subscription is not active until PayPal confirms approval.</p>
+          </div>
+        </div>
+      </article>
+    </div>
 
-  <section id="approval">
-    <h2>7. No Monetization Prior to Approval</h2>
-    <div class="callout">In accordance with Bohemia Interactive's community monetization rules, no monetization of DayZ — including VIP Priority sales or Shop Coin sales — will occur until this application has been formally approved.</div>
-  </section>
-
-  <section id="contact">
-    <h2>8. Support &amp; Contact</h2>
-    <p>For questions, disputes, or refund requests, players can contact server staff through our Discord server: <a class="inline" href="https://discord.gg/warboundofficial">discord.gg/warboundofficial</a></p>
-  </section>
+    <section class="quick-links" aria-labelledby="quick-links-heading">
+      <h2 id="quick-links-heading">Quick links</h2>
+      <div class="link-list">
+        <a class="quick-link" href="https://www.paypal.com/donate/?hosted_button_id=GQSFFJC5GJRTE" target="_blank" rel="noopener noreferrer"><span>💚 Donate</span><span aria-hidden="true">↗</span></a>
+        <a class="quick-link" href="https://www.paypal.com/ncp/payment/FAJ7QYVAWTNPE" target="_blank" rel="noopener noreferrer"><span>👑 VIP payment</span><span aria-hidden="true">↗</span></a>
+        <a class="quick-link" href="https://www.paypal.biz/warbofficial" target="_blank" rel="noopener noreferrer"><span>🪙 Shop Points</span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="notice"><strong>Team note:</strong> Always share the payment link that matches the intended purpose. Check the offer and payment terms on PayPal before completing a transaction.</div>
+    </section>
+  </main>
 
   <footer>
-    Warbound DayZ Server — Community-run, not affiliated with Bohemia Interactive a.s.
+    <div class="shell footer-inner">
+      <span>© <span id="year"></span> PayPal Payment Hub</span>
+      <span>Payments handled by PayPal · Use the official links above</span>
+    </div>
   </footer>
 
-</div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- PayPal subscription button integration -->
+  <script src="https://www.paypal.com/sdk/js?client-id=BAAfLCJgq24DOoYxadNGlvFXWuoGp9P7uiTS04VwKu3NL9UfcmDksx09XeKxT10NVQT2YhAEYmv6szHvQU&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+  <script>
+    paypal.Buttons({
+      style: {
+        shape: 'rect',
+        color: 'blue',
+        layout: 'vertical',
+        label: 'subscribe'
+      },
+      createSubscription: function(data, actions) {
+        return actions.subscription.create({
+          plan_id: 'P-28626469L66565021NLPWPLY'
+        });
+      },
+      onApprove: function(data) {
+        const status = document.getElementById('subscription-status');
+        status.textContent = 'Thank you! PayPal approved the subscription. Subscription ID: ' + data.subscriptionID;
+      },
+      onError: function(err) {
+        console.error('PayPal subscription button error:', err);
+        const status = document.getElementById('subscription-status');
+        status.textContent = 'The PayPal checkout could not be loaded or completed. Please try again or contact the team.';
+        status.style.color = '#ffb4b4';
+      }
+    }).render('#paypal-button-container-P-28626469L66565021NLPWPLY');
+  </script>
 </body>
 </html>
